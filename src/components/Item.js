@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 
 function Item({ name, category }) {
+  // const [name, setName] = useState(name)
   const [isInCart, setIsInCart] = useState(false);
+
+ 
+
+  // const filteredNames = name.map(filteredName => filteredName.name.includes(search)))
+
 
   function handleAddToCartClick() {
     setIsInCart((isInCart) => !isInCart);
   }
+
+  
 
   return (
     <li className={isInCart ? "in-cart" : ""}>
