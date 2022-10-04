@@ -14,12 +14,11 @@ function ShoppingList({ items, onItemFormSubmit }) {
   }
 
   const itemsToDisplay = items
-  .filter((item) => {
-    if (selectedCategory === "All") return true;
+  .filter((item) => selectedCategory === "All"  ||
 
-    return item.category === selectedCategory;
-  })
-  .filter(item => item.name.includes(search))
+     item.category === selectedCategory)
+  
+  .filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
 
 
 
@@ -29,7 +28,7 @@ function ShoppingList({ items, onItemFormSubmit }) {
       <Filter onCategoryChange={handleCategoryChange} search={search} onSearchChange={setSearch}/>
       <ul className="Items">
         {itemsToDisplay.map((item) => (
-          <Item key={item.id} name={item.name} category={item.category} search={search}/>
+          <Item key={item.id} name={item.name} category={item.category}/>
         ))}
       </ul>
     </div>
